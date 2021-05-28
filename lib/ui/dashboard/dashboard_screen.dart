@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pusher/ui/dashboard/configuration_view.dart';
+import 'package:pusher/ui/dashboard/configuration/configuration_view.dart';
 import 'package:pusher/ui/dashboard/header.dart';
 import 'package:pusher/ui/dashboard/response_view.dart';
 import 'package:pusher/ui/menu/side_menu.dart';
@@ -10,7 +10,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: SideMenu(),
+      drawer: const SideMenu(),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(8.0),
@@ -18,9 +18,9 @@ class DashboardScreen extends StatelessWidget {
             children: [
               const Header(),
               const SizedBox(height: 8.0),
-              ConfigurationView(),
+              const ConfigurationView(),
               const SizedBox(height: 8.0),
-              ResponseView(),
+              const ResponseView(),
             ],
           ),
         ),

@@ -25,7 +25,11 @@ class InputField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,
-        hintStyle: Theme.of(context).textTheme.subtitle2,
+        contentPadding: const EdgeInsets.all(8),
+        hintStyle: Theme.of(context)
+            .textTheme
+            .subtitle2
+            ?.copyWith(color: Colors.white54, fontSize: 12),
         labelStyle: Theme.of(context).textTheme.subtitle2,
         enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: primaryColor),
