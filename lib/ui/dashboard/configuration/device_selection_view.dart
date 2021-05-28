@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pusher/bloc/device/device_bloc.dart';
 import 'package:pusher/styles/colors.dart';
-import 'package:pusher/ui/dashboard/configuration/android_configuration_view%20copy.dart';
+import 'package:pusher/ui/dashboard/configuration/android_configuration_view.dart';
 import 'package:pusher/ui/dashboard/configuration/ios_configuration_view.dart';
 
 enum DeviceOs { android, ios }
@@ -58,7 +58,7 @@ class DeviceSelectionView extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          if (state is Android) const AndroidConfigurationView(),
+          if (state is Android) AndroidConfigurationView(),
           if (state is IOS) const IOSConfigurationView(),
         ],
       );
