@@ -46,7 +46,7 @@ class ConfigurationView extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
-                    const MessageView(),
+                    MessageView(),
                   ],
                 ),
               ),
