@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pusher/styles/colors.dart';
-import 'package:pusher/ui/dashboard/input_field.dart';
+import 'package:pusher/ui/components/checkbox_text.dart';
+import 'package:pusher/ui/components/input_field.dart';
 
 class IOSConfigurationView extends StatelessWidget {
   const IOSConfigurationView({Key? key}) : super(key: key);
@@ -17,21 +17,10 @@ class IOSConfigurationView extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        Row(
-          children: [
-            Checkbox(
-              value: true,
-              activeColor: primaryColor,
-              onChanged: (changed) {},
-            ),
-            const Text(
-              "enable broadcast push",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
+        CheckboxText(
+          text: "enable broadcast push",
+          value: true,
+          onChange: (changed) {},
         ),
         InputField(
           hintText: "set iOS device token",

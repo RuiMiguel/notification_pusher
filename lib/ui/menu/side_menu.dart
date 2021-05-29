@@ -13,10 +13,21 @@ class SideMenu extends StatelessWidget {
         child: Column(
           children: [
             DrawerHeader(
-              child: Image.asset("assets/images/phone.png"),
+              child: Column(
+                children: [
+                  Image.asset(
+                    "assets/images/phone.png",
+                    height: 120,
+                  ),
+                  const Text(
+                    "Notification Pusher",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
             DrawerListTile(
-              title: "Dashboard",
+              title: "Send NP",
               press: () {},
             ),
             DrawerListTile(

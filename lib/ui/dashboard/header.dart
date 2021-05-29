@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:pusher/responsive.dart';
 
 class Header extends StatelessWidget {
+  final VoidCallback menuPressed;
+
   const Header({
     Key? key,
+    required this.menuPressed,
   }) : super(key: key);
 
   @override
@@ -12,14 +15,14 @@ class Header extends StatelessWidget {
       children: [
         if (!Responsive.isDesktop(context))
           IconButton(
-            onPressed: () {},
+            onPressed: menuPressed,
             icon: const Icon(Icons.menu),
           ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "Dashboard",
-            style: Theme.of(context).textTheme.headline6,
+            "Send Notification Push",
+            style: Theme.of(context).textTheme.headline5,
           ),
         ),
       ],

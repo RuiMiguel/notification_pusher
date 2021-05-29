@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pusher/ui/components/section_title.dart';
 
 class ResponseView extends StatelessWidget {
   const ResponseView({
@@ -12,15 +13,8 @@ class ResponseView extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "Response",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+            const SectionTitle(
+              title: "Response",
             ),
           ],
         ),

@@ -5,6 +5,7 @@ class InputField extends StatelessWidget {
   final String initialValue;
   final String hintText;
   final String labelText;
+  final int maxLines;
   final Function(String?) onSubmit;
 
   const InputField({
@@ -13,6 +14,7 @@ class InputField extends StatelessWidget {
     required this.hintText,
     required this.labelText,
     required this.onSubmit,
+    this.maxLines = 1,
   }) : super(key: key);
 
   @override
@@ -21,6 +23,7 @@ class InputField extends StatelessWidget {
       initialValue: initialValue,
       autocorrect: false,
       cursorColor: primaryColor,
+      maxLines: maxLines,
       style: Theme.of(context).textTheme.bodyText1,
       decoration: InputDecoration(
         hintText: hintText,
@@ -29,7 +32,7 @@ class InputField extends StatelessWidget {
         hintStyle: Theme.of(context)
             .textTheme
             .subtitle2
-            ?.copyWith(color: Colors.white54, fontSize: 12),
+            ?.copyWith(color: Colors.white54, fontSize: 14),
         labelStyle: Theme.of(context).textTheme.subtitle2,
         enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: primaryColor),

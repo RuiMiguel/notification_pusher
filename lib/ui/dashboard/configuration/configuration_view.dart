@@ -1,59 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pusher/cubit/dropdown/dropdown_cubit.dart';
 import 'package:pusher/styles/colors.dart';
 import 'package:pusher/ui/dashboard/configuration/device_selection_view.dart';
-import 'package:pusher/ui/dashboard/configuration/message_view.dart';
-import 'package:pusher/ui/dashboard/input_field.dart';
+import 'package:pusher/ui/components/section_title.dart';
 
 class ConfigurationView extends StatelessWidget {
-  const ConfigurationView({
+  ConfigurationView({
     Key? key,
   }) : super(key: key);
 
+  late DropdownCubit dropdownCubit;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
+    dropdownCubit = BlocProvider.of<DropdownCubit>(context);
+
+    return BlocBuilder<DropdownCubit, bool>(
+      builder: (context, expandedState) {
+        return Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "Configuration",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SectionTitle(
+                  title: "Configuration",
                 ),
-              ),
+                IconButton(
+                  onPressed: () {
+                    dropdownCubit.toggleExpand();
+                  },
+                  icon: (expandedState)
+                      ? const Icon(Icons.arrow_drop_down_rounded)
+                      : const Icon(Icons.arrow_drop_up_rounded),
+                ),
+              ],
             ),
-          ],
-        ),
-        Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Container(
-                padding: const EdgeInsets.all(16.0),
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: secondaryColor,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    DeviceSelectionView(),
-                    const SizedBox(
-                      height: 16,
+            Visibility(
+              visible: expandedState,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      padding: const EdgeInsets.all(16.0),
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        color: secondaryColor,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          const DeviceSelectionView(),
+                        ],
+                      ),
                     ),
-                    MessageView(),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
-        ),
-      ],
+        );
+      },
     );
   }
 }
