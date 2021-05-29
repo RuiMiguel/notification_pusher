@@ -20,22 +20,29 @@ class MessageView extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               const SectionTitle(
                 title: "Message",
               ),
-              ElevatedButton.icon(
-                onPressed: () {
-                  if (state is Uninitialized) pressed();
-                },
-                style: TextButton.styleFrom(
-                  backgroundColor:
-                      (state is Uninitialized) ? secondaryColor : primaryColor,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 16.0),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    if (state is Uninitialized) pressed();
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: (state is Uninitialized)
+                        ? secondaryColor
+                        : primaryColor,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 24.0),
+                  ),
+                  icon: const Icon(Icons.send),
+                  label: const Text(
+                    "SEND",
+                  ),
                 ),
-                icon: const Icon(Icons.send),
-                label: const Text("Send push"),
               ),
             ],
           ),

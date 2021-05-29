@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pusher/styles/colors.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -9,33 +10,57 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            DrawerHeader(
-              child: Column(
-                children: [
-                  Image.asset(
-                    "assets/images/phone.png",
-                    height: 120,
-                  ),
-                  const Text(
-                    "Notification Pusher",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              color: bgColor,
+              image: DecorationImage(
+                fit: BoxFit.fitHeight,
+                image: AssetImage(
+                  "assets/images/phone.png",
+                ),
               ),
             ),
-            DrawerListTile(
-              title: "Send NP",
-              press: () {},
+            child: Center(
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 10,
+                      spreadRadius: 5,
+                      offset: Offset(0, 5),
+                      color: secondaryColor,
+                    )
+                  ],
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    "Notification Pusher",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
             ),
-            DrawerListTile(
-              title: "History",
-              press: () {},
-            ),
-          ],
-        ),
+          ),
+          DrawerListTile(
+            title: "Send NP",
+            press: () {},
+          ),
+          DrawerListTile(
+            title: "History",
+            press: () {},
+          ),
+        ],
       ),
     );
   }
