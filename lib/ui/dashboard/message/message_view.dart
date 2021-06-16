@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pusher/bloc/device/device_bloc.dart';
 import 'package:pusher/styles/colors.dart';
-import 'package:pusher/ui/components/section_title.dart';
 import 'package:pusher/ui/components/input_field.dart';
+import 'package:pusher/ui/components/section_title.dart';
 
 class MessageView extends StatelessWidget {
   MessageView({Key? key, required this.pressed}) : super(key: key);
@@ -29,7 +29,7 @@ class MessageView extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    if (state is Uninitialized) pressed();
+                    if (state is! Uninitialized) pressed();
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: (state is Uninitialized)

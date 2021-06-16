@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:pusher/bloc/device/device_bloc.dart';
+import 'package:pusher/bloc/sender/sender_bloc.dart';
 import 'package:pusher/cubit/broadcast/broadcast_cubit.dart';
 import 'package:pusher/cubit/drawer/drawer_cubit.dart';
 import 'package:pusher/cubit/dropdown/dropdown_cubit.dart';
@@ -41,6 +42,9 @@ MultiBlocProvider _buildBlocInjection({
       ),
       BlocProvider(
         create: (context) => DeviceBloc(),
+      ),
+      BlocProvider(
+        create: (context) => SenderBloc(),
       ),
     ],
     child: widget,
